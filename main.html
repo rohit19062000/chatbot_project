@@ -1,0 +1,40 @@
+<head>
+  <!-- This is the title of my app -->
+  <title>My Chatbot</title>
+  <!--Adjust size according to different screen resolution-->
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <!--download from "google fonts"-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
+</head>
+<body>
+  {{#if checkCurrentPage "frontPage"}}
+      {{> frontPage}}
+  {{else}}
+      {{> mainSection}}
+      {{> formSection}}
+  {{/if}}
+</body>
+
+<template name = "frontPage">
+  <h1>Welcome!</h1>
+  <p>
+    User Name: <input type = "text" id = "username" size = "10"/> (No Space)
+  </p>
+  <input type = "button" id = "enterMain" value = "Enter" />
+</template>
+
+<template name = "mainSection">
+  <h1>
+    <a href = "https://en.wikipedia.org/wiki/ELIZA" target = "_blank">This is my ELIZA!</a>
+  </h1>
+  <textarea id = "conversationBox" readonly>{{getConversation}}</textarea><br/>
+</template>
+
+<template name = "formSection">
+  <form>
+    <input type = "text" id = "myMsg" size = "80" placeholder = "Please enter your message here..." /><br/>
+    <input type = "submit" class = "buttons" id = "submitMsg" value = "Submit" />
+    <input type = "reset" class = "buttons" id = "resetMsg" value = "Reset" />
+    <input type = "button" class = "buttons" id = "resetUser" value = "Log Out" />
+  </form>
+</template>
